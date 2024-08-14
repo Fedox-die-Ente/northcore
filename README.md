@@ -1,3 +1,5 @@
+# ⚒️ THIS PROJECT IS CURRENTLY UNDER DEVELOPMENT ⚒️
+
 # NorthCore
 
 ![PRs](https://img.shields.io/badge/PRs-welcome-ff69b4.svg?style=shields)
