@@ -1,0 +1,4 @@
+name: northcore-server
+author: Fedox
+version: 1.0.0-SNAPSHOT
+main: net.fedustria.northcore.bootstrap.BungeeBootstrap

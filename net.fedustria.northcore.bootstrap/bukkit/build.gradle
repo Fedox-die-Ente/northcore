@@ -1,0 +1,8 @@
+dependencies {
+    compileOnly("org.spigotmc:spigot-api:1.21-R0.1-SNAPSHOT")
+
+    implementation project(":net.fedustria.northcore.api")
+    implementation project(":net.fedustria.northcore.common")
+    implementation project(":net.fedustria.northcore.bridge")
+    implementation project(":net.fedustria.northcore.bootstrap")
+}

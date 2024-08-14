@@ -1,0 +1,15 @@
+rootProject.name = 'northcore'
+include 'net.fedustria.northcore.bridge'
+include 'net.fedustria.northcore.bootstrap'
+
+include 'net.fedustria.northcore.bootstrap:bungeecord'
+findProject(':net.fedustria.northcore.bootstrap:bungeecord')?.name = 'bungeecord'
+include 'net.fedustria.northcore.bootstrap:bukkit'
+findProject(':net.fedustria.northcore.bootstrap:bukkit')?.name = 'bukkit'
+include 'net.fedustria.northcore.api'
+include 'net.fedustria.northcore.cloud'
+include 'net.fedustria.northcore.database'
+include 'net.fedustria.northcore.common'
+include 'net.fedustria.northcore.common'
+include 'net.fedustria.northcore.setup'
+

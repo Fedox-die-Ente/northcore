@@ -1,0 +1,71 @@
+plugins {
+    id 'java'
+    id 'application'
+    id 'com.github.johnrengelman.shadow' version '8.1.1'
+    id 'java-gradle-plugin'
+}
+
+group = 'net.fedustria'
+version = '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    testImplementation platform('org.junit:junit-bom:5.10.0')
+    testImplementation 'org.junit.jupiter:junit-jupiter'
+
+    implementation project(':net.fedustria.northcore.bootstrap:bungeecord')
+    implementation project(':net.fedustria.northcore.bootstrap:bukkit')
+}
+
+
+application {
+    mainClass = 'net.fedustria.Main'
+}
+
+allprojects {
+    group = 'net.fedustria'
+    version = '1.0-SNAPSHOT'
+
+    repositories {
+        mavenCentral()
+        jcenter()
+
+        maven {
+            url = uri('https://jitpack.io')
+        }
+
+        maven {
+            url = uri 'https://oss.sonatype.org/content/repositories/snapshots'
+        }
+
+        maven {
+            url = uri 'https://repo.papermc.io/repository/maven-public/'
+        }
+    }
+
+    buildscript {
+        repositories {
+            mavenLocal()
+        }
+    }
+
+    compileJava.options.encoding = 'UTF-8'
+}
+
+subprojects {
+    apply plugin: 'java'
+    apply plugin: 'application'
+
+    dependencies {
+        testImplementation platform('org.junit:junit-bom:5.10.0')
+        testImplementation 'org.junit.jupiter:junit-jupiter'
+
+        compileOnly 'org.projectlombok:lombok:1.18.30'
+        annotationProcessor 'org.projectlombok:lombok:1.18.30'
+    }
+
+    compileJava.options.encoding = 'UTF-8'
+}

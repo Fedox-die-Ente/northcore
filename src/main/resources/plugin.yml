@@ -1,0 +1,12 @@
+name: northcore-server
+authors:
+  - Fedox
+  - Austria7
+version: 1.0.0-SNAPSHOT
+main: net.fedustria.northcore.bootstrap.bukkit.BukkitBootstrap
+softdepend:
+  - Vault
+  - ViaVersion
+
+commands:
+  testcmd:

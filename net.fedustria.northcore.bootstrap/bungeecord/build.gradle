@@ -1,0 +1,20 @@
+plugins {
+    id 'java'
+}
+
+group = 'net.fedustria'
+version = '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation project(":net.fedustria.northcore.api")
+
+    compileOnly 'net.md-5:bungeecord-api:1.21-R0.1-SNAPSHOT'
+}
+
+test {
+    useJUnitPlatform()
+}

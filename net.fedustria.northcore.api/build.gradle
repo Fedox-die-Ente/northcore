@@ -1,0 +1,24 @@
+plugins {
+    id 'java'
+}
+
+group = 'net.fedustria'
+version = '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    testImplementation platform('org.junit:junit-bom:5.10.0')
+    testImplementation 'org.junit.jupiter:junit-jupiter'
+
+    implementation group: 'com.fasterxml.jackson.core', name: 'jackson-databind', version: '2.17.2'
+    implementation 'org.reflections:reflections:0.10.2'
+    implementation group: 'org.slf4j', name: 'slf4j-api', version: '2.0.16'
+    testImplementation group: 'org.slf4j', name: 'slf4j-simple', version: '2.0.16'
+}
+
+test {
+    useJUnitPlatform()
+}

@@ -1,0 +1,9 @@
+repositories {
+    maven {
+        url = uri("https://repo.metacloudservice.eu/releases")
+    }
+}
+
+dependencies {
+    implementation "eu.metacloudservice:metacloud-api:1.1.0"
+}

@@ -1,0 +1,39 @@
+plugins {
+    id 'java'
+    id 'application'
+    id 'com.github.johnrengelman.shadow' version '8.1.1'
+}
+
+group = 'net.fedustria'
+version = '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+application {
+    mainClass = 'net.fedustria.northcore.setup.NorthSetup'
+}
+
+dependencies {
+    testImplementation platform('org.junit:junit-bom:5.10.0')
+    testImplementation 'org.junit.jupiter:junit-jupiter'
+
+    implementation 'org.mongodb:mongodb-driver-core:5.1.2'
+    implementation 'org.mongodb:mongodb-driver-sync:5.1.2'
+
+    shadow 'org.mongodb:mongodb-driver-core:5.1.2'
+    shadow 'org.mongodb:mongodb-driver-sync:5.1.2'
+}
+
+test {
+    useJUnitPlatform()
+}
+
+shadowJar {
+    archiveBaseName.set('north-setup')
+    archiveVersion.set('')
+    archiveClassifier.set('')
+    archiveExtension.set('jar')
+    configurations = [project.configurations.shadow]
+}

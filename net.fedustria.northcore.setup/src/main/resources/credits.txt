@@ -1,0 +1,12 @@
+
+        _   __           __  __    ______
+       / | / /___  _____/ /_/ /_  / ____/___  ________
+      /  |/ / __ \/ ___/ __/ __ \/ /   / __ \/ ___/ _ \
+     / /|  / /_/ / /  / /_/ / / / /___/ /_/ / /  /  __/
+    /_/ |_/\____/_/   \__/_/ /_/\____/\____/_/   \___/   [${version}]
+
+    (WHITE)[(BLUE)!(WHITE)] This system is under the ${license} license.
+    (WHITE)[(BLUE)!(WHITE)] Developed by ${author}.
+
+    (WHITE)<(BLUE)?(WHITE)> Detected operating system: ${os}
+    (WHITE)<(BLUE)?(WHITE)> Detected Java version: ${java}
