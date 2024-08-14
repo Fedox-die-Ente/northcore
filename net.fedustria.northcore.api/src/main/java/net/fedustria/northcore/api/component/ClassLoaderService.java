@@ -1,4 +1,4 @@
-package net.fedustria.northcore.api.coupling;
+package net.fedustria.northcore.api.component;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.reflections.Reflections;

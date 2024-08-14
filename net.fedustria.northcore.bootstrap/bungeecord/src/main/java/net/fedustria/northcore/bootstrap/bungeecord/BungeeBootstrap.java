@@ -1,11 +1,11 @@
 package net.fedustria.northcore.bootstrap.bungeecord;
 
-import net.fedustria.northcore.api.coupling.ClassLoaderService;
+import net.fedustria.northcore.api.component.ClassLoaderService;
 import net.md_5.bungee.api.plugin.Plugin;
 
 import java.util.logging.Level;
 
-import static net.fedustria.northcore.api.coupling.ComponentScope.Bungeecord;
+import static net.fedustria.northcore.api.component.ComponentScope.Bungeecord;
 
 public class BungeeBootstrap extends Plugin {
 

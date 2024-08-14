@@ -1,10 +1,10 @@
 package net.fedustria.northcore.bootstrap.bukkit;
 
-import net.fedustria.northcore.api.coupling.ClassLoaderService;
+import net.fedustria.northcore.api.component.ClassLoaderService;
 import net.fedustria.northcore.bootstrap.bukkit.commands.TestCommand;
 import org.bukkit.plugin.java.JavaPlugin;
 
-import static net.fedustria.northcore.api.coupling.ComponentScope.Bukkit;
+import static net.fedustria.northcore.api.component.ComponentScope.Bukkit;
 
 public class BukkitBootstrap extends JavaPlugin {
 
