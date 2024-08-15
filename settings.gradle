@@ -12,4 +12,5 @@ include 'net.fedustria.northcore.database'
 include 'net.fedustria.northcore.common'
 include 'net.fedustria.northcore.common'
 include 'net.fedustria.northcore.setup'
+include 'net.fedustria.northcore.i18n'
 
