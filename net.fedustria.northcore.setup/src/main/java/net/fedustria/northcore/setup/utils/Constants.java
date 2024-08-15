@@ -3,7 +3,7 @@ package net.fedustria.northcore.setup.utils;
 import net.fedustria.northcore.setup.types.EAnsiColor;
 
 /**
- * Constants used throughout the application.
+ * Constants used throughout the setup.
  */
 public class Constants {
 
