@@ -21,9 +21,11 @@ dependencies {
 
     implementation 'org.mongodb:mongodb-driver-core:5.1.2'
     implementation 'org.mongodb:mongodb-driver-sync:5.1.2'
+    implementation group: 'com.fasterxml.jackson.core', name: 'jackson-databind', version: '2.17.2'
 
     shadow 'org.mongodb:mongodb-driver-core:5.1.2'
     shadow 'org.mongodb:mongodb-driver-sync:5.1.2'
+    shadow 'com.fasterxml.jackson.core:jackson-databind:2.17.2'
 }
 
 test {
