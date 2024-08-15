@@ -1,24 +1,27 @@
 package net.fedustria.northcore.database;
 
-import java.util.HashMap;
-import java.util.Map;
+import org.bson.Document;
 
 public class MongoModel {
-	private final Map<String, Object> objects = new HashMap<>();
+    public Document document;
 
-	public String getString(String field) {
-		return (String) objects.get(field);
-	}
+    public MongoModel(final Document document) {
+        this.document = document;
+    }
 
-	public Integer getInt(String field) {
-		return (Integer) objects.get(field);
-	}
+    public String getString(final String field) {
+        return document.getString(field);
+    }
 
-	public Float getFloat(String field) {
-		return (Float) objects.get(field);
-	}
+    public Integer getInt(final String field) {
+        return document.getInteger(field);
+    }
 
-	public Double getDouble(String field) {
-		return (Double) objects.get(field);
-	}
+    public Float getFloat(final String field) {
+        return document.getDouble(field).floatValue();
+    }
+
+    public Double getDouble(final String field) {
+        return document.getDouble(field);
+    }
 }
