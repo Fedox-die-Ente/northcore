@@ -1,4 +1,4 @@
-package net.fedustria.northcore.setup;
+package net.fedustria.northcore.config.data;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -9,13 +9,11 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class NorthConfiguration {
-
+public class DatabaseConfig {
     private String host;
-    private int port;
+    private int    port;
     private String username;
     private String password;
     private String database;
     private String authDatabase;
-
 }

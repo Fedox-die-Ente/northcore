@@ -6,6 +6,7 @@ import com.mongodb.client.MongoClient;
 import com.mongodb.client.MongoClients;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoDatabase;
+import net.fedustria.northcore.config.data.DatabaseConfig;
 import net.fedustria.northcore.setup.fields.password.PasswordField;
 import net.fedustria.northcore.setup.types.EEnvironment;
 import net.fedustria.northcore.setup.utils.OperatingSystemCheck;
@@ -21,6 +22,7 @@ import java.io.File;
 import java.io.IOException;
 import java.util.Scanner;
 
+import static net.fedustria.northcore.config.NCConfig.writeConfig;
 import static net.fedustria.northcore.setup.utils.StringUtils.errorText;
 import static net.fedustria.northcore.setup.utils.StringUtils.prefixText;
 
@@ -50,8 +52,8 @@ public class NorthSetup {
      * @param args Command line arguments
      * @throws IOException If an I/O error occurs
      */
-    public static void main(String[] args) throws IOException {
-        try (Scanner scanner = new Scanner(System.in)) {
+    public static void main(final String[] args) throws IOException {
+        try (final Scanner scanner = new Scanner(System.in)) {
 
             // Check if the operating system is Windows
             if (OperatingSystemCheck.getOperatingSystemType() == OSType.Windows) {
@@ -72,27 +74,27 @@ public class NorthSetup {
             prefixText("Welcome to the NorthCore setup! Let's get started with some basic stuff.");
             prefixText("Which directory should be the working directory? (e.g. /home/northcore)");
 
-            String workingDirectory = scanner.nextLine();
+            final String workingDirectory = scanner.nextLine();
             handleWorkDirectory(workingDirectory);
 
             prefixText("Alright, let's get started with the database stuff. (We use MongoDB btw)\n\n");
             prefixText("You know the drill. What's the host?");
-            String host = scanner.nextLine();
+            final String host = scanner.nextLine();
 
             prefixText("What's the port?");
-            String port = scanner.nextLine();
+            final String port = scanner.nextLine();
 
             prefixText("What's the user name?");
-            String user = scanner.nextLine();
+            final String user = scanner.nextLine();
 
             prefixText("I dont like the username.. Anyways what's the password?");
-            String password = PasswordField.readPassword("");
+            final String password = PasswordField.readPassword("");
 
             prefixText("Thank you for that nice information. What's the database name?");
-            String database = scanner.nextLine();
+            final String database = scanner.nextLine();
 
             prefixText("And what's the authentication database? (e.g. admin)");
-            String authDatabase = scanner.nextLine();
+            final String authDatabase = scanner.nextLine();
 
             if (handleDatabase(host, port, user, password, database, authDatabase)) {
                 createConfigFile(host, port, user, password, database, authDatabase);
@@ -102,37 +104,37 @@ public class NorthSetup {
             prefixText("Alright, we're done here, let's move on to the next step.\n\n");
 
             prefixText("Should animations be automatically activated for a player when they first join? (true/false)");
-            boolean autoActivateAnimations = scanner.nextLine().equalsIgnoreCase("true");
+            final boolean autoActivateAnimations = scanner.nextLine().equalsIgnoreCase("true");
 
             prefixText("Should sounds be automatically activated for a player when they first join? (true/false)");
-            boolean autoActivateSounds = scanner.nextLine().equalsIgnoreCase("true");
+            final boolean autoActivateSounds = scanner.nextLine().equalsIgnoreCase("true");
 
             prefixText("What should be the primary color of the network? (e.g. #2f80cc)");
-            String primaryColor = scanner.nextLine();
+            final String primaryColor = scanner.nextLine();
 
             prefixText("What should be the secondary color of the network? (We recommend a lighter color) (e.g. #ffffff)");
-            String secondaryColor = scanner.nextLine();
+            final String secondaryColor = scanner.nextLine();
 
             prefixText("What is the COLORED name of the network? (e.g. %c1%Fedustria%c2%NET)");
             prefixText("%c1% : Primary color, %c2% : Secondary color");
-            String coloredName = scanner.nextLine();
+            final String coloredName = scanner.nextLine();
 
             prefixText("Which symbols should be in front of the CHAT prefix? (e.g. §7•§8●)");
-            String chatPrefix = scanner.nextLine();
+            final String chatPrefix = scanner.nextLine();
 
             prefixText("Which symbols should be in front of the ITEM prefix? (e.g. §7•§8●)");
-            String itemPrefix = scanner.nextLine();
+            final String itemPrefix = scanner.nextLine();
 
             prefixText("Which symbols should be in front of the INVENTORY prefix? (e.g. §7•§8●)");
-            String inventoryPrefix = scanner.nextLine();
+            final String inventoryPrefix = scanner.nextLine();
 
             prefixText("What should the standard inventories be?");
             prefixText("1. GUI Inventories");
             prefixText("2. Floating Items");
-            int standardInventories = Integer.parseInt(scanner.nextLine());
+            final int standardInventories = Integer.parseInt(scanner.nextLine());
 
             prefixText("Should the player have placeholder items in their inventory by default? (e.g. Glass panes) (true/false)");
-            boolean placeholderItems = scanner.nextLine().equalsIgnoreCase("true");
+            final boolean placeholderItems = scanner.nextLine().equalsIgnoreCase("true");
 
             prefixText("\n\nPlease wait a moment while we create the configuration file...\n\n");
 
@@ -154,8 +156,8 @@ public class NorthSetup {
      *
      * @param path The path to the working directory
      */
-    private static void handleWorkDirectory(String path) {
-        boolean workDirectory = new File(path).mkdirs();
+    private static void handleWorkDirectory(final String path) {
+        final boolean workDirectory = new File(path).mkdirs();
 
         if (!workDirectory) {
 
@@ -184,19 +186,19 @@ public class NorthSetup {
      * @param authDatabase The MongoDB authentication database
      * @return true if the database connection is successful, false otherwise
      */
-    private static boolean handleDatabase(String host, String port, String user, String password, String database, String authDatabase) {
+    private static boolean handleDatabase(final String host, final String port, final String user, final String password, final String database, final String authDatabase) {
 
-        String uri = "mongodb://" + user + ":" + password + "@" + host + ":" + port;
+        final String uri = "mongodb://" + user + ":" + password + "@" + host + ":" + port;
 
         client = MongoClients.create(uri);
 
         mongoDatabase = client.getDatabase(database);
 
         try {
-            Bson command = new BsonDocument("ping", new BsonInt64(1));
-            Document commandResult = mongoDatabase.runCommand(command);
+            final Bson command = new BsonDocument("ping", new BsonInt64(1));
+            final Document commandResult = mongoDatabase.runCommand(command);
             return true;
-        } catch (MongoException e) {
+        } catch (final MongoException e) {
             errorText("Could not connect to the database!");
             errorText("Please check your credentials and try again.");
             System.exit(1);
@@ -204,9 +206,9 @@ public class NorthSetup {
         }
     }
 
-    private static void createConfigFile(String host, String port, String user, String password, String database, String authDatabase) {
+    private static void createConfigFile(final String host, final String port, final String user, final String password, final String database, final String authDatabase) {
 
-        File configFile = new File(System.getenv("NORTHCORE_WORKING_DIRECTORY") + "/config.json");
+        final File configFile = new File(System.getenv("NORTHCORE_WORKING_DIRECTORY") + "/config.json");
 
         if (configFile.exists()) {
             errorText("Configuration file already exists!");
@@ -215,18 +217,16 @@ public class NorthSetup {
 
         try {
             configFile.createNewFile();
-        } catch (IOException e) {
+        } catch (final IOException e) {
             errorText("Configuration file could not be created!");
             System.exit(1);
         }
 
-        ObjectMapper objectMapper = new ObjectMapper();
-
-        NorthConfiguration configuration = new NorthConfiguration(host, Integer.parseInt(port), user, password, database, authDatabase);
-
+        final ObjectMapper objectMapper = new ObjectMapper();
+        
         try {
-            objectMapper.writeValue(configFile, configuration);
-        } catch (IOException e) {
+            writeConfig(configFile, new DatabaseConfig(host, Integer.parseInt(port), user, password, database, authDatabase));
+        } catch (final IOException e) {
             errorText("Configuration file could not be written!");
             System.exit(1);
         }
@@ -247,7 +247,7 @@ public class NorthSetup {
      * @param placeholderItems       Whether the player should have placeholder items in their inventory by default
      * @return true if the default values are successfully created, false otherwise
      */
-    private static boolean handleDefaultValues(boolean autoActivateAnimations, boolean autoActivateSounds, String primaryColor, String secondaryColor, String coloredName, String chatPrefix, String itemPrefix, String inventoryPrefix, int standardInventories, boolean placeholderItems) {
+    private static boolean handleDefaultValues(final boolean autoActivateAnimations, final boolean autoActivateSounds, final String primaryColor, final String secondaryColor, final String coloredName, final String chatPrefix, final String itemPrefix, final String inventoryPrefix, final int standardInventories, final boolean placeholderItems) {
 
         if (standardInventories < 1 || standardInventories > 2) {
             errorText("Invalid value for standard inventories!");
@@ -258,7 +258,7 @@ public class NorthSetup {
 
         mongoDatabase.createCollection("settings");
 
-        Document document = new Document("name", "defaultSettings")
+        final Document document = new Document("name", "defaultSettings")
                 .append("autoActivateAnimations", autoActivateAnimations)
                 .append("autoActivateSounds", autoActivateSounds)
                 .append("primaryColor", primaryColor)
