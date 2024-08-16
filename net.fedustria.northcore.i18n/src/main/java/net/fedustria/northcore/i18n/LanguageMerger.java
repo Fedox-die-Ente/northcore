@@ -11,40 +11,69 @@ import java.util.Map;
 
 public class LanguageMerger {
 
+    /**
+     * ObjectMapper instance for JSON processing.
+     */
     private static final ObjectMapper objectMapper = new ObjectMapper();
 
+    /**
+     * Main method to start the language merging process.
+     *
+     * @param args Command line arguments
+     * @throws IOException If an I/O error occurs
+     */
     public static void main(String[] args) throws IOException {
 
+        // Load the main languages.json file
         File languagesJsonFile = new File(LanguageMerger.class.getClassLoader().getResource("languages/languages.json").getFile());
+        // Load the directory containing language-specific JSON files
         File languageDirectory = new File(LanguageMerger.class.getClassLoader().getResource("languages/").getFile());
 
+        // Read the main languages.json file into an ObjectNode
         ObjectNode result = (ObjectNode) objectMapper.readTree(languagesJsonFile);
 
+        // Get the "languages" node from the main JSON file
         JsonNode languages = result.get("languages");
+        // Iterate over each language entry in the "languages" node
         Iterator<Map.Entry<String, JsonNode>> languageEntries = languages.fields();
 
         while (languageEntries.hasNext()) {
             Map.Entry<String, JsonNode> entry = languageEntries.next();
             String languageKey = entry.getValue().get("key").asText();
 
+            // Merge the JSON files for the current language key
             mergeJsonFiles(result, languageKey, languageDirectory);
         }
 
+        // Print the merged result as a pretty-printed JSON string
         System.out.println(objectMapper.writerWithDefaultPrettyPrinter().writeValueAsString(result));
     }
 
+    /**
+     * Merges JSON files for a specific language key into the result ObjectNode.
+     *
+     * @param result            The ObjectNode to merge the JSON files into
+     * @param languageKey       The language key to merge JSON files for
+     * @param languageDirectory The directory containing language-specific JSON files
+     * @throws IOException If an I/O error occurs
+     */
     private static void mergeJsonFiles(ObjectNode result, String languageKey, File languageDirectory) throws IOException {
+        // List of JSON file names to merge
         String[] filesToMerge = {"messages", "titles", "actionbars", "scoreboardLines", "textValues", "items"};
 
         for (String fileName : filesToMerge) {
+            // Construct the file path for the current JSON file
             File jsonFile = new File(languageDirectory, languageKey + "/" + fileName + ".json");
             if (jsonFile.exists()) {
+                // Read the content of the JSON file
                 JsonNode fileContent = objectMapper.readTree(jsonFile);
+                // Get or create the target node in the result ObjectNode
                 ObjectNode targetNode = (ObjectNode) result.get(fileName);
                 if (targetNode == null) {
                     targetNode = objectMapper.createObjectNode();
                     result.set(fileName, targetNode);
                 }
+                // Set the content of the JSON file into the target node
                 targetNode.set(languageKey, fileContent);
             }
         }
