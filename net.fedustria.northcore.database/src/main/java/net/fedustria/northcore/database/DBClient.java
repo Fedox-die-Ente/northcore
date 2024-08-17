@@ -16,10 +16,10 @@ public class DBClient {
      * @param password The password for authentication.
      * @param authDb   The authentication database.
      */
-    public DBClient(final String ip, final String port, final String user, final String password, final String authDb) {
+    public DBClient(final String ip, final int port, final String user, final String password, final String authDb) {
         final MongoCredential credential = MongoCredential.createCredential(user, authDb, password.toCharArray());
 
-        final String url = String.format("mongodb://%s:%s@%s:%s/%s", user, password, ip, port, authDb);
+        final String url = String.format("mongodb://%s:%s@%s:%d/%s", user, password, ip, port, authDb);
         this.client = MongoClients.create(url);
     }
 

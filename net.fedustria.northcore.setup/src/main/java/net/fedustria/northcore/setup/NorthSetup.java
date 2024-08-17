@@ -1,6 +1,5 @@
 package net.fedustria.northcore.setup;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
 import com.mongodb.MongoException;
 import com.mongodb.client.MongoClient;
 import com.mongodb.client.MongoClients;
@@ -222,8 +221,6 @@ public class NorthSetup {
             System.exit(1);
         }
 
-        final ObjectMapper objectMapper = new ObjectMapper();
-        
         try {
             writeConfig(configFile, new DatabaseConfig(host, Integer.parseInt(port), user, password, database, authDatabase));
         } catch (final IOException e) {
