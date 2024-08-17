@@ -20,7 +20,7 @@ public abstract class BaseCore {
     public BaseCore() {
         try {
             final DatabaseConfig dbConfig = NCConfig.loadConfig(new File(System.getenv(WORKING_DIRECTORY), "config.json"), DatabaseConfig.class);
-            dbClient = new DBClient(dbConfig.getHost(), dbConfig.getPort(), dbConfig.getUsername(), dbConfig.getPassword(), dbConfig.getAuthDatabase());
+            dbClient = new DBClient(dbConfig);
         } catch (final IOException e) {
             throw new RuntimeException(e);
         }
