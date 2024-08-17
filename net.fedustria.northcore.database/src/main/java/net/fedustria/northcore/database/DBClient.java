@@ -3,14 +3,13 @@ package net.fedustria.northcore.database;
 import com.mongodb.MongoCredential;
 import com.mongodb.client.MongoClient;
 import com.mongodb.client.MongoClients;
-import com.mongodb.client.MongoDatabase;
 import lombok.Getter;
 import net.fedustria.northcore.config.data.DatabaseConfig;
 
 public class DBClient {
-    private final MongoClient   client;
+    private final MongoClient client;
     @Getter
-    private final MongoDatabase defaultDb;
+    private final MongoDB     defaultDb;
 
     /**
      * Constructs a new DBClient instance with the specified connection parameters.
@@ -28,7 +27,7 @@ public class DBClient {
         final String url = String.format("mongodb://%s:%s@%s:%d/%s", user, password, ip, port, authDb);
         this.client = MongoClients.create(url);
 
-        this.defaultDb = client.getDatabase(database);
+        this.defaultDb = getDatabase(database);
     }
 
     /**
