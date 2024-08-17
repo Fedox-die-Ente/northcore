@@ -1,6 +1,9 @@
 dependencies {
+    implementation project(':net.fedustria.northcore.config')
+
     implementation 'org.mongodb:mongodb-driver-core:5.1.2'
     implementation 'org.mongodb:mongodb-driver-sync:5.1.2'
+
     implementation group: 'org.slf4j', name: 'slf4j-api', version: '2.0.16'
     testImplementation group: 'org.slf4j', name: 'slf4j-simple', version: '2.0.16'
 }
