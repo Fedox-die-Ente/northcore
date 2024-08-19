@@ -1,3 +1,9 @@
 dependencies {
     implementation project(':net.fedustria.northcore.api')
+    implementation project(':net.fedustria.northcore.database')
+
+    implementation group: 'com.fasterxml.jackson.core', name: 'jackson-databind', version: '2.17.2'
+
+    implementation 'org.mongodb:mongodb-driver-core:5.1.2'
+    implementation 'org.mongodb:mongodb-driver-sync:5.1.2'
 }
