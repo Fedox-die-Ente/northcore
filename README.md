@@ -1,8 +1,8 @@
 <hr>
 
-<h1 align="center" id="title">⚒️ PROJECT IS CURRENTLY UNDER DEVELOPMENT ⚒️</h1>
+<div align="center" style="font-size: 2em; font-weight: bold;">⚒️ PROJECT IS CURRENTLY UNDER DEVELOPMENT ⚒️</div>
 
-<h2 align="center" id="title" style="border-bottom: none;">🗻 NorthCore 🗻</h2>
+<div align="center" style="font-size: 1.5em; font-weight: bold; margin-top: 20px;">🗻 NorthCore 🗻</div>
 
 <div align="center">
 
