@@ -1,11 +1,13 @@
 <h1 align="center" id="title">⚒️ PROJECT IS CURRENTLY UNDER DEVELOPMENT ⚒️</h1>
 <hr>
 <h2 align="center" id="title">🗻 NorthCore 🗻</h2>
-<hr>
+<div align="center">
 
 ![PRs](https://img.shields.io/badge/PRs-welcome-ff69b4.svg?style=shields)
 [![license](https://img.shields.io/badge/license-AGPL_3.0-blue.svg)](LICENSE)
+</div>
 
+<hr>
 ## 🌐 Demo
 
 Here is a working live demo: (Currently not available)
