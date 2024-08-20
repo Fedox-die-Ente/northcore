@@ -8,6 +8,7 @@
 </div>
 
 <hr>
+
 ## 🌐 Demo
 
 Here is a working live demo: (Currently not available)
