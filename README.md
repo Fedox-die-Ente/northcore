@@ -1,6 +1,8 @@
+<hr>
+
 <h1 align="center" id="title">⚒️ PROJECT IS CURRENTLY UNDER DEVELOPMENT ⚒️</h1>
 
-<h2 align="center" id="title">🗻 NorthCore 🗻</h2>
+<h2 align="center" id="title" style="border-bottom: none;">🗻 NorthCore 🗻</h2>
 
 <div align="center">
 
