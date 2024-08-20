@@ -88,11 +88,11 @@ public class TextComponentBuilder {
         return this;
     }
 
-    public String result() {
+    public String build() {
         return builder.toString();
     }
 
-    public String result(APIPlayer apiPlayer) {
+    public String build(APIPlayer apiPlayer) {
         return apiPlayer.replacePlaceholder(builder.toString());
     }
 }

@@ -5,6 +5,7 @@ import lombok.NonNull;
 
 public class APIPlayer {
 
+
     @Getter
     public String language = "german";
 

@@ -15,8 +15,8 @@ public class LanguageTest {
                 .addPlaceholder("0", "12")
                 .translate();
 
-
         System.out.println(message);
+
     }
 
 }
