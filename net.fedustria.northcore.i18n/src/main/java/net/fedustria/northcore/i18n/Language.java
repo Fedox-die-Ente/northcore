@@ -6,27 +6,28 @@ import net.fedustria.northcore.config.data.DatabaseConfig;
 import net.fedustria.northcore.config.exceptions.InvalidConfigException;
 import net.fedustria.northcore.database.DBClient;
 import net.fedustria.northcore.database.MongoDB;
-import org.bson.Document;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
 
 import static net.fedustria.northcore.common.Constants.WORKING_DIRECTORY;
 
 public class Language {
 
     @Getter
-    private static Document cachedChatMessages;
+    private static final Map<String, String> cachedChatMessages = new HashMap<>();
     @Getter
-    private static Document cachedTitles;
+    private static final Map<String, String> cachedTitles = new HashMap<>();
     @Getter
-    private static Document cachedScoreboardLines;
+    private static final Map<String, String> cachedScoreboardLines = new HashMap<>();
     @Getter
-    private static Document cachedActionBars;
+    private static final Map<String, String> cachedActionBars = new HashMap<>();
     @Getter
-    private static Document cachedTextValues;
+    private static final Map<String, String> cachedTextValues = new HashMap<>();
     @Getter
-    private static Document cachedItems;
+    private static final Map<String, String> cachedItems = new HashMap<>();
 
     @Getter
     private static MongoDB settingsDB;

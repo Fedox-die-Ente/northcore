@@ -1,5 +1,6 @@
 package net.fedustria.northcore.i18n.impl;
 
+import net.fedustria.northcore.i18n.Language;
 import net.fedustria.northcore.i18n.LanguageMessage;
 import net.fedustria.northcore.i18n.types.ELanguageType;
 
@@ -11,11 +12,9 @@ public class LanguageActionbar extends LanguageMessage {
 
     @Override
     public String translate() {
-        // TODO: Implement cache
-
-        String message = getMessageFromDatabase(ELanguageType.ACTIONBAR, key);
-
-        return replacePlaceholders(message);
+        return replacePlaceholders(
+                Language.getCachedActionBars().computeIfAbsent(key, k -> getMessageFromDatabase(ELanguageType.ACTIONBAR, k))
+        );
     }
 
 }
