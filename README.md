@@ -1,75 +1,72 @@
 <h1 align="center" id="title">⚒️ PROJECT IS CURRENTLY UNDER DEVELOPMENT ⚒️</h1>
-<hr>
+
 <h2 align="center" id="title">🗻 NorthCore 🗻</h2>
+
 <div align="center">
 
 ![PRs](https://img.shields.io/badge/PRs-welcome-ff69b4.svg?style=shields)
 [![license](https://img.shields.io/badge/license-AGPL_3.0-blue.svg)](LICENSE)
+
 </div>
 
 <hr>
 
 ## 🌐 Demo
 
-Here is a working live demo: (Currently not available)
+A live demo is currently not available, but stay tuned for updates!
 
 ## 📝 Description
 
-Welcome to my project! This ambitious undertaking is designed to provide a comprehensive, fully customizable network
-solution, all in a single package. Here’s an overview of what inspired this project and the key features it offers:
+Welcome to NorthCore! This ambitious project aims to deliver a comprehensive, fully customizable network solution all in
+a single package. Here’s a brief overview:
 
-- **Motivation:** Im driven to create a seamless, all-in-one network solution that leverages MongoDB for efficient
-  data management, with the flexibility to cater to various gameplay modes.
+- **Motivation:** Creating a seamless, all-in-one network solution that leverages MongoDB for efficient data management
+  and caters to various gameplay modes.
 
-- **Why I Built This Project:** My primary goal is to develop a versatile, multi-language network system that can be
-  tailored to fit diverse needs, providing an accessible and efficient platform for any Minecraft community.
+- **Purpose:** The primary goal is to develop a versatile, multi-language network system, adaptable to diverse needs,
+  providing an accessible and efficient platform for any Minecraft community.
 
-### ⚒️ How to Contribute
+## ⚒️ How to Contribute
 
-Want to contribute? Great!
+Want to contribute? Awesome! Here's how you can help:
 
-To fix a bug or enhance an existing module, follow these steps:
+1. Fork the repo
+2. Create a new branch (`git checkout -b improve-feature`)
+3. Make your changes
+4. Add your changes to the commit
+5. Commit your changes (`git commit -am 'Improve feature'`)
+6. Push to the branch (`git push origin improve-feature`)
+7. Create a Pull Request
 
-- Fork the repo
-- Create a new branch (`git checkout -b improve-feature`)
-- Make the appropriate changes in the files
-- Add changes to reflect the changes made
-- Commit your changes (`git commit -am 'Improve feature'`)
-- Push to the branch (`git push origin improve-feature`)
-- Create a Pull Request
+## 📩 Bug / Feature Request
 
-### 📩 Bug / Feature Request
+Found a bug? Please open an issue [here](https://github.com/Fedox-die-Ente/northcore/issues/new) and describe the
+problem with the expected result.
 
-If you find a bug, kindly open an issue [here](https://github.com/Fedox-die-Ente/northcore/issues/new) by including the
-problem and the expected result.
-
-If you'd like to request a new function, feel free to do so by opening an
-issue [here](https://github.com/Fedox-die-Ente/northcore/issues/new). Please include a feature and their corresponding
-results.
+Want to request a new feature? Open an issue [here](https://github.com/Fedox-die-Ente/northcore/issues/new) and outline
+the feature along with the desired outcome.
 
 ## 📜 Credits
 
-I'd like to acknowledge my collaborators, who contributed to the success of this project. Below are links to their
-GitHub profiles.
+A huge thanks to my collaborators for their contributions:
 
-Furthermore, I utilized certain third-party assets that require attribution. Find the creators' links in this section.
+- **Fedox**  
+  Email: f3dox@proton.me  
+  GitHub: [@Fedox-die-Ente](https://github.com/Fedox-die-Ente)
 
-If I followed tutorials during development, I'd include the links to those as well.
+- **Austria7 (Riechkolbinator 3000)**  
+  Email: john.smith@example.com  
+  GitHub: [@Austria7](https://github.com/Austria7)
 
-👦 Fedox <br>
-Email: f3dox@proton.me <br>
-GitHub: [@Fedox-die-Ente](https://github.com/Fedox-die-Ente)
-
-👦 Austria7 (Riechkolbinator 3000) <br>
-Email: john.smith@example.com <br>
-GitHub: [@Austria7](https://github.com/Austria7)
+Special thanks to the creators of third-party assets used in this project. Attribution links can be found below.
 
 ## 📞 Contact Us
 
-![DISCORD](https://img.shields.io/badge/DISCORD-fedox-white?labelColor=blue&style=for-the-badge)<br>
+Stay connected with us on Discord:
 
-![DISCORD](https://img.shields.io/badge/DISCORD-austria7-white?labelColor=blue&style=for-the-badge)
+- ![DISCORD](https://img.shields.io/badge/DISCORD-fedox-white?labelColor=blue&style=for-the-badge)
+- ![DISCORD](https://img.shields.io/badge/DISCORD-austria7-white?labelColor=blue&style=for-the-badge)
 
 ## 📋 License
 
-This project is licensed under the AGPL 3.0 License - see the [LICENSE](LICENSE) file for details.
+This project is licensed under the AGPL 3.0 License. See the [LICENSE](LICENSE) file for more details.
