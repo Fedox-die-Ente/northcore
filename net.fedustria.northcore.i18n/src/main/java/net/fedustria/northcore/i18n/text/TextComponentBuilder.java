@@ -4,86 +4,86 @@ import lombok.Data;
 import net.fedustria.northcore.api.player.impl.APIPlayer;
 
 @Data
-public class PlayerText {
+public class TextComponentBuilder {
 
     private StringBuilder builder = new StringBuilder();
 
-    public PlayerText text(String text) {
+    public TextComponentBuilder text(String text) {
         builder.append(text);
         return this;
     }
 
-    public PlayerText nextLine() {
+    public TextComponentBuilder nextLine() {
         builder.append("§7\n");
         return this;
     }
 
-    public PlayerText coins() {
+    public TextComponentBuilder coins() {
         builder.append("%coins%");
         return this;
     }
 
-    public PlayerText messageSplitter() {
+    public TextComponentBuilder messageSplitter() {
         builder.append("%splitter%");
         return this;
     }
 
-    public PlayerText serverName() {
+    public TextComponentBuilder serverName() {
         builder.append("%servername%");
         return this;
     }
 
-    public PlayerText arrow() {
+    public TextComponentBuilder arrow() {
         builder.append("%arrow%");
         return this;
     }
 
-    public PlayerText motto() {
+    public TextComponentBuilder motto() {
         builder.append("%motto%");
         return this;
     }
 
-    public PlayerText prefix() {
+    public TextComponentBuilder prefix() {
         builder.append("%prefix%");
         return this;
     }
 
-    public PlayerText networkNameWithColors() {
+    public TextComponentBuilder networkNameWithColors() {
         builder.append("%nnwc%");
         return this;
     }
 
-    public PlayerText nn() {
+    public TextComponentBuilder nn() {
         builder.append("%nn%");
         return this;
     }
 
-    public PlayerText playerName() {
+    public TextComponentBuilder playerName() {
         builder.append("%playerName%");
         return this;
     }
 
-    public PlayerText clanTag() {
+    public TextComponentBuilder clanTag() {
         builder.append("%clan%");
         return this;
     }
 
-    public PlayerText prefixSplitter() {
+    public TextComponentBuilder prefixSplitter() {
         builder.append("%prefixSplitter%");
         return this;
     }
 
-    public PlayerText space() {
+    public TextComponentBuilder space() {
         builder.append(" ");
         return this;
     }
 
-    public PlayerText firstColor() {
+    public TextComponentBuilder firstColor() {
         builder.append("%c1%");
         return this;
     }
 
-    public PlayerText secondColor() {
+    public TextComponentBuilder secondColor() {
         builder.append("%c2%");
         return this;
     }
