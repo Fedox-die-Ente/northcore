@@ -4,6 +4,7 @@ import net.fedustria.northcore.config.NCConfig;
 import net.fedustria.northcore.config.data.DatabaseConfig;
 import net.fedustria.northcore.database.DBClient;
 import net.fedustria.northcore.database.MongoDB;
+import org.bson.Document;
 
 import java.io.File;
 import java.io.IOException;
@@ -24,11 +25,9 @@ public class LanguageUtils {
 
         String jsonFile = LanguageMerger.getDefaultJSONFile();
 
-        System.out.println(jsonFile);
+        Document doc = Document.parse(jsonFile);
 
-//        Document doc = Document.parse(jsonFile);
-//
-//        settingsDB.insertNewFields("settings", doc, "name", "language");
+        settingsDB.insertNewFields("settings", doc, "name", "language");
     }
 
 }

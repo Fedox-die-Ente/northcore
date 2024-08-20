@@ -52,22 +52,17 @@ public class LanguageMerger {
      * @throws IOException If an I/O error occurs
      */
     private static void mergeJsonFiles(ObjectNode result, String languageKey, File languageDirectory) throws IOException {
-        // List of JSON file names to merge
         String[] filesToMerge = {"messages", "titles", "actionbars", "scoreboardLines", "textValues", "items"};
 
         for (String fileName : filesToMerge) {
-            // Construct the file path for the current JSON file
             File jsonFile = new File(languageDirectory, languageKey + "/" + fileName + ".json");
             if (jsonFile.exists()) {
-                // Read the content of the JSON file
                 JsonNode fileContent = objectMapper.readTree(jsonFile);
-                // Get or create the target node in the result ObjectNode
                 ObjectNode targetNode = (ObjectNode) result.get(fileName);
                 if (targetNode == null) {
                     targetNode = objectMapper.createObjectNode();
                     result.set(fileName, targetNode);
                 }
-                // Set the content of the JSON file into the target node
                 targetNode.set(languageKey, fileContent);
             }
         }
