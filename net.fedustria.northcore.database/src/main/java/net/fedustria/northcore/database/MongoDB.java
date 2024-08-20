@@ -7,6 +7,10 @@ import org.bson.Document;
 import java.util.HashMap;
 import java.util.Map;
 
+import static java.util.Objects.isNull;
+import static net.fedustria.northcore.database.Finder.find;
+import static net.fedustria.northcore.database.MongoUtils.mergeDocuments;
+
 public class MongoDB {
     private final MongoDatabase db;
 
@@ -54,6 +58,26 @@ public class MongoDB {
      */
     public void createCollection(final String collectionName) {
         db.createCollection(collectionName);
+    }
+
+    /**
+     * Adds new fields to an existing document in the specified collection.
+     *
+     * @param collectionName The name of the collection to update.
+     * @param document       The new fields to add to the document.
+     * @param key            The key to search for in the document.
+     * @param value          The value to search for in the document.
+     */
+    public void insertNewFields(final String collectionName, final Document document, final String key, final String value) {
+        final var collection = db.getCollection(collectionName);
+
+        final var oldDocument = getModel(find(key, value)).getDocument();
+        if (isNull(oldDocument)) {
+            collection.insertOne(document);
+            return;
+        }
+
+        db.getCollection(collectionName).insertOne(mergeDocuments(oldDocument, document));
     }
 
     /**
