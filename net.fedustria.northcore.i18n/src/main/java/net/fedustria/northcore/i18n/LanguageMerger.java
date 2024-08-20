@@ -24,28 +24,22 @@ public class LanguageMerger {
      */
     public static void main(String[] args) throws IOException {
 
-        // Load the main languages.json file
         File languagesJsonFile = new File(LanguageMerger.class.getClassLoader().getResource("languages/languages.json").getFile());
-        // Load the directory containing language-specific JSON files
+
         File languageDirectory = new File(LanguageMerger.class.getClassLoader().getResource("languages/").getFile());
 
-        // Read the main languages.json file into an ObjectNode
         ObjectNode result = (ObjectNode) objectMapper.readTree(languagesJsonFile);
 
-        // Get the "languages" node from the main JSON file
         JsonNode languages = result.get("languages");
-        // Iterate over each language entry in the "languages" node
         Iterator<Map.Entry<String, JsonNode>> languageEntries = languages.fields();
 
         while (languageEntries.hasNext()) {
             Map.Entry<String, JsonNode> entry = languageEntries.next();
             String languageKey = entry.getValue().get("key").asText();
 
-            // Merge the JSON files for the current language key
             mergeJsonFiles(result, languageKey, languageDirectory);
         }
 
-        // Print the merged result as a pretty-printed JSON string
         System.out.println(objectMapper.writerWithDefaultPrettyPrinter().writeValueAsString(result));
     }
 
@@ -77,5 +71,25 @@ public class LanguageMerger {
                 targetNode.set(languageKey, fileContent);
             }
         }
+    }
+
+    public static String getDefaultJSONFile() throws IOException {
+        File languagesJsonFile = new File(LanguageMerger.class.getClassLoader().getResource("languages/languages.json").getFile());
+
+        File languageDirectory = new File(LanguageMerger.class.getClassLoader().getResource("languages/").getFile());
+
+        ObjectNode result = (ObjectNode) objectMapper.readTree(languagesJsonFile);
+
+        JsonNode languages = result.get("languages");
+        Iterator<Map.Entry<String, JsonNode>> languageEntries = languages.fields();
+
+        while (languageEntries.hasNext()) {
+            Map.Entry<String, JsonNode> entry = languageEntries.next();
+            String languageKey = entry.getValue().get("key").asText();
+
+            mergeJsonFiles(result, languageKey, languageDirectory);
+        }
+
+        return objectMapper.writerWithDefaultPrettyPrinter().writeValueAsString(result);
     }
 }
