@@ -18,16 +18,13 @@ public class APIPlayer implements IAPIPlayer {
 
     private final UUID uniqueId;
 
-    private APIPlayer(@NonNull UUID uniqueId) {
+    private APIPlayer(@NonNull final UUID uniqueId) {
         this.uniqueId = uniqueId;
-
         players.put(uniqueId, this);
     }
 
-    public static APIPlayer get(@NonNull UUID uniqueId) {
-        if (players.containsKey(uniqueId)) return players.get(uniqueId);
-
-        return new APIPlayer(uniqueId);
+    public static APIPlayer get(@NonNull final UUID uniqueId) {
+        return players.getOrDefault(uniqueId, new APIPlayer(uniqueId));
     }
 
 
@@ -52,7 +49,7 @@ public class APIPlayer implements IAPIPlayer {
     }
 
     @Override
-    public String replacePlaceholder(String message) {
+    public String replacePlaceholder(final String message) {
         return message
                 .replaceAll("%test%", "Test Value");
     }
@@ -82,20 +79,20 @@ public class APIPlayer implements IAPIPlayer {
 
     @Override
     public boolean isOnline() {
-        return BaseCore.getCore().isOnline(this.uniqueId);
+        return BaseCore.getCore().isOnline(uniqueId);
     }
 
     @Override
-    public void sendMessage(String message) {
-        if (message == null) return;
-
-        if (isOnline()) {
-            BaseCore.getCore().sendMessage(this, replacePlaceholder(message));
+    public void sendMessage(final String message) {
+        if (message == null || !isOnline()) {
+            return;
         }
+
+        BaseCore.getCore().sendMessage(this, replacePlaceholder(message));
     }
 
     @Override
-    public void sendMessages(List<String> messages) {
+    public void sendMessages(final List<String> messages) {
         messages.forEach(this::sendMessage);
     }
 

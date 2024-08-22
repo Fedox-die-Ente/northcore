@@ -20,19 +20,16 @@ public class BukkitPlayer implements IAPIPlayer {
     private static HashMap<UUID, BukkitPlayer> players = new HashMap<>();
 
     private final APIPlayer handle;
-    private final Player player;
+    private final Player    player;
 
-    private BukkitPlayer(APIPlayer handle) {
+    private BukkitPlayer(final APIPlayer handle) {
         this.handle = handle;
-
         this.player = Bukkit.getPlayer(handle.getUniqueId());
-
         players.put(handle.getUniqueId(), this);
     }
 
-    public static BukkitPlayer get(UUID uniqueId) {
-        if (players.containsKey(uniqueId)) return players.get(uniqueId);
-        return new BukkitPlayer(BaseCore.getCore().getAPIPlayer(uniqueId));
+    public static BukkitPlayer get(final UUID uniqueId) {
+        return players.getOrDefault(uniqueId, new BukkitPlayer(BaseCore.getCore().getAPIPlayer(uniqueId)));
     }
 
     @Override
@@ -56,10 +53,12 @@ public class BukkitPlayer implements IAPIPlayer {
     }
 
     @Override
-    public String replacePlaceholder(String message) {
-        if (message == null) return "";
+    public String replacePlaceholder(final String message) {
+        if (message == null) {
+            return "";
+        }
 
-        String replaced = message
+        final String replaced = message
                 .replaceAll("%test%", "Test Value");
 
         return this.handle.replacePlaceholder(replaced);
@@ -87,27 +86,22 @@ public class BukkitPlayer implements IAPIPlayer {
 
     @Override
     public boolean isOnline() {
-        if (BaseCore.getCore().getBukkit().getPlugin().getServer().getPlayer(this.getUniqueId()) == null) return false;
-        return BaseCore.getCore().getBukkit().getPlugin().getServer().getPlayer(this.getUniqueId()).isOnline();
+        return player != null && player.isOnline();
     }
 
     @Override
-    public void sendMessage(String message) {
-        if (this.player != null) {
-            if (this.player.isOnline()) {
-                this.player.sendMessage(this.replacePlaceholder(message));
-                return;
-            }
+    public void sendMessage(final String message) {
+        if (player != null && player.isOnline()) {
+            player.sendMessage(this.replacePlaceholder(message));
+            return;
         }
 
         getHandle().sendMessage(message);
     }
 
     @Override
-    public void sendMessages(List<String> messages) {
-        for (String message : messages) {
-            sendMessage(message);
-        }
+    public void sendMessages(final List<String> messages) {
+        messages.forEach(this::sendMessage);
     }
 
     @Override
@@ -125,8 +119,8 @@ public class BukkitPlayer implements IAPIPlayer {
         return this;
     }
 
-    public void setGameMode(GameMode gameMode) {
-        getPlayer().setGameMode(gameMode);
+    public void setGameMode(final GameMode gameMode) {
+        player.setGameMode(gameMode);
     }
 
 }

@@ -12,16 +12,16 @@ public class TestCommand implements CommandExecutor {
 
 
     @Override
-    public boolean onCommand(CommandSender commandSender, Command command, String s, String[] strings) {
+    public boolean onCommand(final CommandSender commandSender, final Command command, final String s, final String[] strings) {
 
-        if (commandSender instanceof Player player) {
+        if (commandSender instanceof final Player player) {
 
 
             // After rejoin the message is not sent, but the api player is not null
 
-            APIPlayer apiPlayer = BukkitCore.getCore().getAPIPlayer(player.getUniqueId());
+            final APIPlayer apiPlayer = BukkitCore.getCore().getAPIPlayer(player.getUniqueId());
 
-            System.out.println("APIPlayer: " + apiPlayer.getBukkitPlayer().getName());
+            System.out.println("APIPlayer: " + apiPlayer.getBukkitPlayer().getPlayer().getName());
 
             if (apiPlayer == null) {
                 player.sendMessage("APIPlayer could not be found or created.");
