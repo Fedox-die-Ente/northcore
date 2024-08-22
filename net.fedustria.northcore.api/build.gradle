@@ -17,6 +17,12 @@ dependencies {
     implementation 'org.reflections:reflections:0.10.2'
     implementation group: 'org.slf4j', name: 'slf4j-api', version: '2.0.16'
     testImplementation group: 'org.slf4j', name: 'slf4j-simple', version: '2.0.16'
+
+    implementation project(":net.fedustria.northcore.database")
+    implementation project(":net.fedustria.northcore.config")
+    implementation project(":net.fedustria.northcore.common")
+
+    compileOnly('org.spigotmc:spigot-api:1.21-R0.1-SNAPSHOT')
 }
 
 test {

@@ -1,44 +1,48 @@
 package net.fedustria.northcore.api.player;
 
+import net.fedustria.northcore.api.player.impl.BukkitPlayer;
+
 import java.util.List;
 import java.util.UUID;
 
 public interface IAPIPlayer {
 
-	UUID getUniqueId();
+    UUID getUniqueId();
 
-	// CloudPlayer
-	String getShortUniqueId();
+    // CloudPlayer
+    String getShortUniqueId();
 
-	String getName();
+    String getName();
 
-	String getDisplayName();
+    String getDisplayName();
 
-	// getDisplayName with BukkitPlayer
+    // getDisplayName with BukkitPlayer
 
-	String replacePlaceholder(String message);
+    String replacePlaceholder(String message);
 
-	String getColor1();
+    String getColor1();
 
-	String getColor2();
+    String getColor2();
 
-	String getPrefix();
+    String getPrefix();
 
-	// Language getLanguage();
+    String getLanguage();
 
-	boolean isOnline();
+    boolean isOnline();
 
-	void sendMessage(String message);
+    void sendMessage(String message);
 
-	void sendMessages(List<String> messages);
+    void sendMessages(List<String> messages);
 
-	void sendNoPermissionMessage();
+    void sendNoPermissionMessage();
 
-	// TODO: Add coin shit
+    // TODO: Add coin shit
 
-	// TODO: add clan shit
+    // TODO: add clan shit
 
-	// TODO: Cloud Permission shit
+    // TODO: Cloud Permission shit
 
-	void sendLobby();
+    void sendLobby();
+
+    BukkitPlayer getBukkitPlayer();
 }
